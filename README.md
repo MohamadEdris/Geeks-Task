@@ -31,10 +31,10 @@ Run
   http://127.0.0.1:5000/
 ```
 ## DockerHub repository:
-![image](https://user-images.githubusercontent.com/57872327/182921099-49cf1c68-3b99-44d0-a9a9-1abeea3bfca7.png)
+![image](https://user-images.githubusercontent.com/73100170/183134525-6ef7adfa-2e17-4dc8-a9ba-c29226834ad8.png)
 
 
-## kubernetes
+## kubernetes 
 
 Start minikube
 
