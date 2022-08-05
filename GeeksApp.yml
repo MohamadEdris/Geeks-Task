@@ -1,0 +1,54 @@
+# geeks-profile deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geeks-task
+  labels:
+    app: geeks-task
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: geeks-task
+  template:
+    metadata:
+      labels:
+        app: geeks-task
+    spec:
+      containers:
+        - name: geeks-task
+          image: medris2796/geeks-task:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: config
+                  key: MYSQL_HOST
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: config
+                  key: MYSQL_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: config
+                  key: MYSQL_PASSWORD
+---
+# geeks-profile service
+apiVersion: v1
+kind: Service
+metadata:
+  name: geeks-task-service
+spec:
+  type: ClusterIP
+  selector:
+    app: geeks-task
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+
+
